@@ -164,6 +164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
+  clip: {fileID: 8300000, guid: 4ba9c26b9efbb7147888128f84f2721b, type: 3}
 --- !u!82 &794287896538818263
 AudioSource:
   m_ObjectHideFlags: 0

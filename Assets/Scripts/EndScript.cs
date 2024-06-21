@@ -8,11 +8,35 @@ public class EndScript : MonoBehaviour
 {
     public AudioClip clip;
     public string nextScene;
+
+    private AudioSource audioSource;
+
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+        audioSource.clip = clip;
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.tag.Equals("Player"))
+        if (collision.collider.CompareTag("Player"))
         {
-            SceneManager.LoadScene(nextScene);
+            // Play the audio clip
+            if (audioSource != null && clip != null)
+            {
+                audioSource.Play();
+            }
+
+            // Load the next scene after a delay, or immediately after audio clip length
+            StartCoroutine(LoadNextScene());
         }
+    }
+
+    private IEnumerator LoadNextScene()
+    {
+        yield return new WaitForSeconds(clip.length); // Wait for the audio clip to finish
+
+        // Load the next scene
+        SceneManager.LoadScene(nextScene);
     }
 }
