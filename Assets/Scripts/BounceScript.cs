@@ -26,4 +26,5 @@ public class BounceScript : MonoBehaviour
             AudioSource.PlayClipAtPoint(bounceClip,transform.localPosition);
         }
     }
+    
 }

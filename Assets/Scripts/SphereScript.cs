@@ -33,7 +33,7 @@ public class SphereScript : MonoBehaviour
             print("bong");
             death = true;
         }
-        if (transform.localPosition.y < -50)
+        if (transform.localPosition.y < -40)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
