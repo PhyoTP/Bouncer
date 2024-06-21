@@ -53,4 +53,54 @@ if (transform.localPosition.y < -40)
     SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 }
 ```
-To ensure the background didn't stop playing when the scene changes, i added `DontDestroyOnLoad(gameObject);` to the empty holding the music script. Here is the music script:
+To ensure the background didn't stop playing when the scene changes, i added `DontDestroyOnLoad(gameObject);` to the empty holding the [music script](https://github.com/PhyoTP/Bouncer/blob/master/Assets/Scripts/AudioManager.cs). I made the audio persist by writing this:
+```cs
+private void OnCollisionEnter(Collision collision)
+{
+    if (collision.collider.CompareTag("Player"))
+    {
+        // Play the audio clip
+        if (audioSource != null && clip != null)
+        {
+            audioSource.Play();
+        }
+
+        // Load the next scene after a delay, or immediately after audio clip length
+        StartCoroutine(LoadNextScene());
+    }
+}
+
+private IEnumerator LoadNextScene()
+{
+    yield return new WaitForSeconds(clip.length); // Wait for the audio clip to finish
+
+    // Load the next scene
+    
+    SceneManager.LoadScene(nextScene);
+}
+```
+I made the moving platforms in Level 4 like this:
+```cs
+public class PlatformScript : MonoBehaviour
+{
+    private Vector3 direction;
+    public float startPos;
+    // Start is called before the first frame update
+    void Start()
+    {
+        startPos = transform.localPosition.z-2;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+        transform.Translate(direction * Time.deltaTime);
+        if (transform.localPosition.z <= startPos) direction = Vector3.forward;
+        else if (transform.localPosition.z == startPos+2) direction = Vector3.back;
+        else if (transform.localPosition.z >= startPos+5) direction = Vector3.back;
+        
+        
+    }
+}
+```
