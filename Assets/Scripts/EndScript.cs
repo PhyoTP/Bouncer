@@ -34,16 +34,10 @@ public class EndScript : MonoBehaviour
 
     private IEnumerator LoadNextScene()
     {
-        if (nextScene == null) {
+        yield return new WaitForSeconds(clip.length); // Wait for the audio clip to finish
 
-        }
-        else
-        {
-            yield return new WaitForSeconds(clip.length); // Wait for the audio clip to finish
-
-            // Load the next scene
-
-            SceneManager.LoadScene(nextScene);
-        }
+        // Load the next scene
+        
+        SceneManager.LoadScene(nextScene);
     }
 }

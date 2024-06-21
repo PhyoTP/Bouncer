@@ -120,7 +120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clip: {fileID: 8300000, guid: 59c97f2960ea99c468604f89149ff4ad, type: 3}
-  nextScene: Level5
+  nextScene: 
 --- !u!82 &8260149281763306418
 AudioSource:
   m_ObjectHideFlags: 0
