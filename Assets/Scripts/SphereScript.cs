@@ -29,7 +29,7 @@ public class SphereScript : MonoBehaviour
         //respawn
         if (transform.localPosition.y < -10 && !death)
         {
-            AudioSource.PlayClipAtPoint(clip, transform.position);
+            //AudioSource.PlayClipAtPoint(clip, transform.position);
             print("bong");
             death = true;
         }
