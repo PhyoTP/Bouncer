@@ -1,3 +1,4 @@
+![image](https://github.com/PhyoTP/Bouncer/assets/135086719/e8b24d06-2dd7-492a-ac59-9566d7c9442a)
 # Welcome to Bouncers!
 - A game where you are a bouncing ball
 - Reach the end with the help of trampolines
